@@ -1,9 +1,6 @@
-# StatisticalPhysics
-Statistics of ensemble of partcles
-
-Simulations using Scilab Software 
-
-File Description 
+# StatisticalPhysics 
+Simulations using Scilab Software for statistics in of an ensemble of particles. 
+All file descriptions are given below. 
 
 # AllStats 
 Plot the distribution function for energies at different temperatures
