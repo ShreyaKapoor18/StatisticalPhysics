@@ -1,0 +1,36 @@
+clc 
+clf 
+
+Ef=1; // the Fermi level energy in electron volts
+e=1.6*(10^(-19)); 
+kb=1.38*(10^(-23)); 
+E=0:0.01:10; 
+T=[300,20000,10000]; 
+n=length(T)
+ffd=zeros(n,length(E));// function for Fermi Dirac Distribution
+fbe=zeros(n,length(E)); //function for Bose Einstein Distribution
+fmb=zeros(n,length(E)); // function for Maxwell Boltzmann distribution 
+A=10;
+
+for i=1:n
+   ffd(i,:)=(1+exp((E-Ef)*e/(kb*T(1,i)))).^(-1)
+   fbe(i,:)=(A*exp((E*e)/(kb*T(1,i)))-1).^(-1);
+   fmb(i,:)=(A*exp(E*e/(kb*T(1,i)))).^(-1); 
+end  
+size(E) 
+size(ffd(1,:))
+subplot(311)
+plot(E,ffd(1,:),'r',E,ffd(2,:),'g',E,ffd(3,:),'b'); 
+xlabel('Energy') ;
+ylabel('$f_(fd)_$') ;
+legend(['T=300K','T=2000K','T=10000K']);
+subplot(312)
+plot(E,fbe(1,:),'r',E,fbe(2,:),'g',E,fbe(3,:),'b'); 
+xlabel('Energy') ;
+ylabel('$f_(BE)_$');
+legend(['T=300K','T=2000K','T=10000K']);
+subplot(313)
+plot(E,fmb(1,:),'r',E,fmb(2,:),'g',E,fmb(3,:),'b'); 
+xlabel('Energy') ;
+ylabel('$f_(MB)_$');
+legend(['T=300K','T=2000K','T=10000K'])
